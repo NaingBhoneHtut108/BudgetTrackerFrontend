@@ -13,9 +13,9 @@ export class AppComponent {
   title = 'Budget Tracker';
   apiUrl = environment.apiUrl;
   constructor(private http: HttpClient) {
-    this.testAPI();
+    // this.testAPI();
   } 
-
+  
   testAPI(){
     const api = this.apiUrl + '/auth/test';
     this.http.get(api).subscribe((res) => {
