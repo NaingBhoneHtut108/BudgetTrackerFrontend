@@ -14,4 +14,12 @@ export class LoginComponent {
 
   }
 
+  login(){
+
+  }
+
+  goToSignUp(){
+    this.router.navigate(["/auth/signup"]);
+  }
+
 }
