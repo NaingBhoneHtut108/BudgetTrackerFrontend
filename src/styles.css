@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+        --level-one:    #e5f4ff;
+        --level-two:    #abd0eb;
+        --level-three:  #72acd8;
+        --level-four:   #3988c5;
+        --level-five:   #0064b2;
+        --level-six:    #00508c;
+        --level-seven:  #003a66;
+        --level-eight:  #002440;
+        --level-nine:   #000e1a;
+        --background-color: #f9f9f9;
+        --text-color: #333;
+      }
+
+body{
+  background-color: #a0baeb73;
+}

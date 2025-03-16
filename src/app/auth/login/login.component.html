@@ -3,14 +3,12 @@
         <h2 translate>Login</h2>
         <form>
             <div class="input-field">
-                <input required type="text" />
-                <label translate>Email</label>
+                <input required type="text" [(ngModel)]="email" placeholder="Email" name="email"/>
             </div>
             <div class="input-field">
-                <input required type="password" />
-                <label translate>Password</label>
+                <input required type="password" [(ngModel)]="password" placeholder="Password" name="password"/>
             </div>
-            <button type="button">{{ "Login" }}</button>
+            <button (click)="login()" type="button">Login</button>
             <button class="mt-2" (click)="goToSignUp()" type="button">Sign Up</button>
         </form>
     </div>

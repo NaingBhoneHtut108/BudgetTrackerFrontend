@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { environment } from '../../../environments/environment';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-signup',
@@ -18,36 +19,21 @@ export class SignupComponent {
   password : string = "";
   apiUrl: string = environment.apiUrl;
 
-  constructor(private http: HttpClient, private router : Router){
-    this.testAPI();
-  }
-
-  testAPI(){
-    console.log("Calling API")
-    this.http.get(this.apiUrl + '/test').subscribe(
-      data=> {
-        console.log(JSON.stringify(data));
-      },
-      error=>{
-        console.log("Failed To Call API : " + JSON.stringify(error));
-      }
-    )
+  constructor(private http: HttpClient, private router : Router,private toastr: ToastrService) {
   }
 
   signUp(){
-    console.log("Username : " + this.username);
-    console.log("Email : " + this.email);
-    console.log("Password : " + this.password);
     var requestData : any  = {'username' : this.username, 'email' : this.email, 'password' : this.password};
-    // this.http.post(this.apiUrl + '/user/singup',requestData).subscribe(
-    //   data => {
-    //     console.log("Signed Up Successful");
-    //   },
-    //   error => {
-    //     // Handle Error
-    //   }
-    // )
-    // TODO : call API
+    this.http.post(this.apiUrl + '/user/signup',requestData).subscribe(
+      (data) => {
+        this.toastr.success('User Created Successfully', 'Success');
+        this.router.navigate(['/auth/login']);
+      },
+      (error) => {
+        this.toastr.error('Error Occured. Please contact to developers.', 'Error');
+        console.log(error);
+      }
+    )
   }
 
   goToLogin(){

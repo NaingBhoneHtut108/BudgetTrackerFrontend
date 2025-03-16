@@ -1,2 +1,54 @@
-<app-header></app-header>
-<p>home works dude!</p>
+<app-header></app-header>        
+<div class="home-page">
+        <!-- Main Content -->
+        <div class="container">
+          <div class="welcome-section">
+            <h1>Welcome, {{ userName }}!</h1>
+            <p>Your role: {{ userRole }}</p>
+          </div>
+      
+          <!-- Budget Summary -->
+          <div class="budget-summary">
+            <h2>Budget Summary</h2>
+            <div class="summary-cards">
+              <div class="card">
+                <h3>Total Income</h3>
+                <p>{{ totalIncome | currency }}</p>
+              </div>
+              <div class="card">
+                <h3>Total Expenses</h3>
+                <p>{{ totalExpenses | currency }}</p>
+              </div>
+              <div class="card">
+                <h3>Remaining Balance</h3>
+                <p>{{ remainingBalance | currency }}</p>
+              </div>
+            </div>
+          </div>
+      
+          <!-- Recent Transactions -->
+          <div class="recent-transactions">
+            <h2>Recent Transactions</h2>
+            <table>
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Description</th>
+                  <th>Amount</th>
+                  <th>Type</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let transaction of recentTransactions">
+                  <td>{{ transaction.date | date }}</td>
+                  <td>{{ transaction.description }}</td>
+                  <td [ngClass]="{'income': transaction.type === 'Income', 'expense': transaction.type === 'Expense'}">
+                    {{ transaction.amount | currency }}
+                  </td>
+                  <td>{{ transaction.type }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
